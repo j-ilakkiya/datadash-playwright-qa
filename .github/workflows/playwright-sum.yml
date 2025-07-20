@@ -1,0 +1,28 @@
+name: QA Automation with Playwright
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  scrape-and-sum:
+    name: QA Job by 24f3002460@ds.study.iitm.ac.in
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Dependencies
+      run: |
+        npm init -y
+        npm install playwright
+
+    - name: Run Playwright Script
+      run: node qa-script.js
